@@ -1,67 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Style/style.css">
     <title>Projetos | Guardiões de Xique-Xique</title>
-    <link rel="icon" href="../Assets/favicon.png" type="image/png">
+    <link rel="icon" href="../Assets/Images/favicon.png" type="image/png">
 </head>
+
 <body>
 
     <header class="cabecalho-principal">
         <div class="logo-area">
-            <img src="../Assets/logo.png" alt="Logotipo da organização Guardiões de Xique-Xique" width="150" height="150">
+            <img src="../Assets/Images/logo.png" alt="Logotipo da organização Guardiões de Xique-Xique" width="150"
+                height="150">
             <h1>Guardiões de Xique-Xique: Transformando Vidas pela Comunidade</h1>
         </div>
 
         <nav>
             <ul>
                 <li><a href="../Index.html">Início</a></li>
-                <li><a href="../Pages/Projetos.html">Nossos Projetos</a></li>
+                <li class="dropdown">
+                    <a href="../Pages/Projetos.html" class="active">Nossos Projetos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#mentoria">Mentoria Educacional</a></li>
+                        <li><a href="#cozinha">Cozinha Solidária</a></li>
+                        <li><a href="#doacao">Como Doar</a></li>
+                    </ul>
+                </li>
                 <li><a href="../Pages/Cadastro.html">Faça Parte</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="voluntariado">
-            <h1>Nossos Projetos</h1>
-            <h2>Oportunidades de Voluntariado</h2>
-            <p>O voluntariado é o coração da nossa organização. Temos diversas frentes de trabalho para você aplicar seu talento e fazer a diferença.</p>
-            <img src="../Assets/Projeto_Voluntariado.png" alt="Foto da equipe de voluntários em ação" width="600" height="500">
-            
-            <article>
-                <h3>Programa de Mentoria Educacional</h3>
-                <p>Ajude jovens em idade escolar com reforço em português e matemática. Dedique apenas 2 horas semanais.</p>
-                <aside>
-                    <p>Requisitos: Experiência prévia em ensino ou formação em áreas correlatas é um diferencial.</p>
-                </aside>
-                <img src="../Assets/Projeto_Mentoria.png" alt="Foto da equipe de voluntários em ação" width="600" height="500">
+        <section id="voluntariado" class="container-grid">
+            <div class="col-12">
+                <h1>Nossos Projetos</h1>
+                <h2>Oportunidades de Voluntariado</h2>
+                <p>O voluntariado é o coração da nossa organização. Temos diversas frentes de trabalho para você aplicar
+                    seu talento e fazer a diferença.</p>
+                <div class="alert alert-warning">
+                    ⚠️ Atenção: Novas vagas para voluntários abrem no início de cada mês.
+                </div>
+            </div>
 
-            </article>
+            <div class="col-12 card-grid" style="margin-top:0 !important">
 
-            <article>
-                <h3>Cozinha Solidária</h3>
-                <p>Auxilie na preparação e distribuição de refeições para famílias em situação de vulnerabilidade.</p>
-                <img src="../Assets/Projeto_Cozinha_Solidaria.png" alt="Foto da equipe de voluntários em ação" width="600" height="500">
-            </article>
+                <article id="mentoria" class="card">
+                    <img src="../Assets/Images/Projeto_Mentoria.png" alt="Jovens estudando com um mentor"
+                        class="card-img-top">
+                    <div class="card-content">
+                        <h3>Programa de Mentoria Educacional</h3>
+                        <p>
+                            <span class="badge badge-educacao">Educação</span>
+                            <span class="badge badge-voluntariado">Voluntariado</span>
+                        </p>
+                        <p>Ajude jovens em idade escolar com reforço em português e matemática. Dedique apenas 2 horas
+                            semanais.</p>
+                        <aside>
+                            <p class="text-small">Requisitos: Experiência prévia em ensino ou formação em áreas
+                                correlatas é um diferencial.</p>
+                        </aside>
+                        <a href="../Pages/Cadastro.html" class="btn btn-primary">Quero ser Mentor</a>
+                    </div>
+                </article>
+
+                <article id="cozinha" class="card">
+                    <img src="../Assets/Images/Projeto_Cozinha_Solidaria.png" alt="Voluntários cozinhando em equipe"
+                        class="card-img-top">
+                    <div class="card-content">
+                        <h3>Cozinha Solidária</h3>
+                        <p>
+                            <span class="badge badge-social">Ação Social</span>
+                            <span class="badge badge-voluntariado">Voluntariado</span>
+                        </p>
+                        <p>Auxilie na preparação e distribuição de refeições para famílias em situação de
+                            vulnerabilidade.</p>
+                        <a href="../Pages/Cadastro.html" class="btn btn-primary">Ajudar na Cozinha</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="../Assets/Images/Projeto_Voluntariado.png" alt="Pessoas plantando árvores"
+                        class="card-img-top">
+                    <div class="card-content">
+                        <h3>Revitalização de Praças</h3>
+                        <p>
+                            <span class="badge badge-ambiente">Sustentabilidade</span>
+                        </p>
+                        <p>Apoie a recuperação de áreas verdes e espaços de convivência na cidade de Xique-Xique.</p>
+                        <button class="btn btn-primary" disabled>Vagas Esgotadas</button>
+                    </div>
+                </article>
+
+            </div>
+
         </section>
-        
-        <hr>
 
-        <section id="doacao">
-            <h2>💰 Como Doar e Contribuir</h2>
-            <p>Sua contribuição financeira ou material garante a continuidade dos nossos projetos. Veja como é fácil doar:</p>
-            
-            <ol>
-                <li>Escolha o valor ou tipo de doação (dinheiro, alimentos, roupas).</li>
-                <li>Preencha o formulário de doação online.</li>
-                <li>Receba um comprovante e o nosso muito obrigado!</li>
-            </ol>
+        <section id="doacao" class="container-grid" style="margin-top: 5em;">
+            <div class="col-12">
+                <h2>Como Doar e Contribuir</h2>
+                <p>Sua contribuição financeira ou material garante a continuidade dos nossos projetos. Veja como é fácil
+                    doar:</p>
+
+                <ol style="margin: 2rem;">
+                    <li>Escolha o valor ou tipo de doação (dinheiro, alimentos, roupas).</li>
+                    <li>Preencha o formulário de doação online.</li>
+                    <li>Receba um comprovante e o nosso muito obrigado!</li>
+                </ol>
+
+                <a href="#" class="btn btn-secondary">Quero Fazer uma Doação</a>
+            </div>
         </section>
-        
-        <hr>
     </main>
 
     <footer>
@@ -69,4 +121,5 @@
     </footer>
 
 </body>
+
 </html>
