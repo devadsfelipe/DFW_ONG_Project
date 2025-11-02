@@ -222,11 +222,9 @@ footer {
     min-width: 0;
 }
 
-/* Navegação */
 .cabecalho-principal nav {
     margin-top: var(--spacing-s);
     width: 100%;
-    /* Garante que a nav ocupe a largura total e possa centralizar o UL */
 }
 
 nav ul {
@@ -235,7 +233,6 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
-    /* Centraliza o menu horizontalmente */
     gap: var(--spacing-s);
     flex-wrap: wrap;
 }
@@ -302,10 +299,6 @@ footer a {
     color: var(--color-secondary-base);
 }
 
-/* ========================================================= */
-/* 5. COMPONENTES DE INTERFACE */
-/* ========================================================= */
-
 /* === Botões === */
 .btn {
     display: inline-block;
@@ -354,7 +347,7 @@ footer a {
     opacity: 0.6;
 }
 
-/* === Cards Responsivos (Para Projetos.html) === */
+/* === Cards Responsivos === */
 .card-grid {
     display: grid;
     gap: var(--spacing-l);
@@ -389,7 +382,7 @@ footer a {
     flex-grow: 1;
 }
 
-/* === Badges/Tags === */
+/* === Badges === */
 .badge {
     display: inline-block;
     padding: var(--spacing-xs) calc(var(--spacing-xs) + 4px);
@@ -421,7 +414,7 @@ footer a {
     color: var(--color-neutral-dark);
 }
 
-/* === Formulários Estilizados com Validação Visual (Para Cadastro.html) === */
+/* === Formulários Estilizados com Validação === */
 form {
     max-width: 600px;
     margin: var(--spacing-m) auto;
@@ -474,7 +467,7 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(42, 142, 83, 0.2);
 }
 
-/* Validação Visual */
+/* Validação  */
 input:invalid:not(:placeholder-shown) {
     border-color: var(--color-error);
 }
@@ -505,10 +498,6 @@ input:valid:not(:placeholder-shown) {
     border-color: var(--color-secondary-dark);
 }
 
-/* ========================================================= */
-/* 6. RESPONSIVIDADE (5 Breakpoints Mínimos) */
-/* ========================================================= */
-
 /* 1. Mobile Pequeno (Mínimo 480px) */
 @media screen and (min-width: 480px) {
     .logo-area h1 {
@@ -522,8 +511,6 @@ input:valid:not(:placeholder-shown) {
         padding: var(--spacing-l);
     }
 
-    /* Apenas ajusta o alinhamento da área do logo. 
-       O cabecalho-principal continua em flex-direction: column (empilhado) */
     .cabecalho-principal {
         align-items: center;
     }
@@ -547,7 +534,6 @@ input:valid:not(:placeholder-shown) {
         font-size: 2.2rem;
     }
 
-    /* Regras de Coluna do Grid Customizado */
     .col-desktop-7 {
         grid-column: span 7;
     }
@@ -556,7 +542,6 @@ input:valid:not(:placeholder-shown) {
         grid-column: span 5;
     }
 
-    /* Aplica o Grid para a seção de objetivo na Index.html */
     #objetivo.container-grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
