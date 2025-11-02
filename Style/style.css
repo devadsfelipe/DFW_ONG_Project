@@ -1,77 +1,580 @@
+/* ========================================================= */
+/* 1. SISTEMA DE DESIGN (Variáveis, Cores, Tipografia, Espaçamento) */
+/* ========================================================= */
+
+:root {
+    /* ---------------------------------- */
+    /* Paleta de Cores (Mínimo 8 cores) */
+    /* ---------------------------------- */
+    --color-primary-base: #2a8e53;
+    /* Verde Principal (Guardiões) */
+    --color-primary-dark: #1e6c3e;
+    /* Verde para estados (hover) */
+    --color-secondary-base: #f7931e;
+    /* Laranja Secundário (Ação/Destaque) */
+    --color-secondary-dark: #cc781a;
+    /* Laranja para estados */
+
+    --color-neutral-white: #ffffff;
+    --color-neutral-light: #f4f4f4;
+    /* Fundo/bordas leves */
+    --color-neutral-medium: #888888;
+    /* Borda, texto de apoio */
+    --color-neutral-dark: #333333;
+    /* Texto principal */
+
+    /* Cores de Feedback */
+    --color-success: #4caf50;
+    --color-error: #f44336;
+    --color-warning: #ffeb3b;
+
+    /* ---------------------------------- */
+    /* Tipografia (Mínimo 5 tamanhos) */
+    /* ---------------------------------- */
+    --font-family-primary: 'Roboto', sans-serif;
+    --font-family-secondary: 'Merriweather', serif;
+
+    --font-size-xxl: 2.8rem;
+    /* H1 */
+    --font-size-xl: 2rem;
+    /* H2 */
+    --font-size-l: 1.5rem;
+    /* H3 */
+    --font-size-m: 1rem;
+    /* Padrão (body) */
+    --font-size-s: 0.875rem;
+    /* Pequeno (badges, legendas) */
+
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    /* ---------------------------------- */
+    /* Espaçamento Modular (Múltiplos de 8px) */
+    /* ---------------------------------- */
+    --spacing-xs: 8px;
+    --spacing-s: 16px;
+    --spacing-m: 24px;
+    --spacing-l: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+
+    /* Variáveis de Borda e Sombra */
+    --border-radius-s: 4px;
+    --box-shadow-m: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================================= */
+/* 2. BASE (Reset e Tipografia Global) */
+/* ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-m);
+    line-height: 1.6;
+    color: var(--color-neutral-dark);
+    background-color: var(--color-neutral-white);
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-family-secondary);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-s);
+    color: var(--color-primary-dark);
+    font-weight: var(--font-weight-bold);
+}
+
+h1 {
+    font-size: var(--font-size-xxl);
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+}
+
+h3 {
+    font-size: var(--font-size-l);
+    margin-bottom: var(--spacing-xs);
+}
+
+p {
+    margin-bottom: var(--spacing-m);
+}
+
+a {
+    color: var(--color-primary-base);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Classe utilitária para texto pequeno */
+.text-small {
+    font-size: var(--font-size-s);
+    color: var(--color-neutral-medium);
+}
+
+ol {
+    margin-block-start: 0; 
+    margin-block-end: 0;  
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 0; 
+  
+}
+
+/* ========================================================= */
+/* 3. LAYOUT GRID E ESTRUTURA (12 Colunas) */
+/* ========================================================= */
+
+/* CSS Grid para a estrutura macro */
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+    padding: var(--spacing-m) var(--spacing-s);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer {
+    grid-area: footer;
+}
+
+/* Sistema de Grid Customizado (12 colunas) */
+.container-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-m);
+    width: 100%;
+}
+
+.col-12 {
+    grid-column: span 12;
+}
+
+
+/* ========================================================= */
+/* 4. LAYOUT E NAVEGAÇÃO (Flexbox para Cabeçalho) */
+/* ========================================================= */
+
 .cabecalho-principal {
-    background-color: #f0f0f0; 
-    padding: 10px 20px;
-    border-bottom: 2px solid #ccc;
+    background-color: var(--color-neutral-light);
+    border-bottom: 3px solid var(--color-primary-base);
+    padding: var(--spacing-s) var(--spacing-m);
+
+    display: flex;
+    /* Manter a direção da coluna (empilhada) em todas as telas */
+    flex-direction: column;
+    /* Centraliza os itens horizontalmente (logo-area e nav) */
+    align-items: center;
+    text-align: center;
 }
 
+/* Logo e título: Flexbox em linha, mas wrap em mobile */
 .logo-area {
-    display: flex; 
-    align-items: center; 
-    gap: 20px; 
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-m);
+    padding: var(--spacing-s) 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
-.cabecalho-principal nav {
-    margin-top: 10px;
+.logo-area img {
+    border-radius: 50%;
+    flex-shrink: 0;
 }
 
 .logo-area h1 {
-    font-size: 2em; 
-    margin: 0; 
+    font-size: 1.5rem;
+    margin: 0;
+    min-width: 0;
 }
 
-.cabecalho-principal nav ul {
+/* Navegação */
+.cabecalho-principal nav {
+    margin-top: var(--spacing-s);
+    width: 100%;
+    /* Garante que a nav ocupe a largura total e possa centralizar o UL */
+}
+
+nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: center;
+    /* Centraliza o menu horizontalmente */
+    gap: var(--spacing-s);
+    flex-wrap: wrap;
 }
 
-.cabecalho-principal nav li {
-    margin-right: 15px;
+nav a {
+    padding: var(--spacing-xs) var(--spacing-s);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-dark);
+    border-bottom: 2px solid transparent;
 }
 
-.cabecalho-principal nav a {
+nav a:hover,
+nav a.active {
+    color: var(--color-primary-base);
+    border-bottom: 2px solid var(--color-primary-base);
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
 }
 
-body { 
-    font-family: sans-serif; 
+/* === Submenu Dropdown === */
+.dropdown {
+    position: relative;
+    padding-bottom: 2px;
 }
-form { 
-    max-width: 600px; 
-    margin: 20px auto; 
-    padding: 20px; 
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-neutral-white);
+    box-shadow: var(--box-shadow-m);
+    min-width: 200px;
+    z-index: 100;
+    list-style: none;
+    padding: var(--spacing-xs) 0;
+    border-radius: var(--border-radius-s);
+    border-top: 2px solid var(--color-primary-base);
 }
-fieldset { 
-    margin-bottom: 20px; 
-    padding: 15px; 
-    border: 1px solid #ddd; 
-    border-radius: 5px; 
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
-legend { 
-    font-weight: bold; 
-    padding: 0 10px; 
+
+.dropdown-menu li {
+    margin: 0;
 }
-label { 
-    display: block; 
-    margin-bottom: 5px; 
-    font-weight: bold; 
+
+.dropdown-menu a {
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-s);
+    white-space: nowrap;
+    border: none;
 }
-input[type="text"], 
-input[type="email"], 
-input[type="tel"], 
-input[type="date"], 
-select { 
-    width: calc(100% - 12px); 
-    padding: 8px; 
-    margin-bottom: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
+
+/* Footer */
+footer {
+    background-color: var(--color-neutral-dark);
+    color: var(--color-neutral-white);
+    padding: var(--spacing-m);
+    text-align: center;
 }
-input:invalid:not(:placeholder-shown) { 
-    border-color: red; 
+
+footer a {
+    color: var(--color-secondary-base);
+}
+
+/* ========================================================= */
+/* 5. COMPONENTES DE INTERFACE */
+/* ========================================================= */
+
+/* === Botões === */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-s) var(--spacing-m);
+    border: none;
+    border-radius: var(--border-radius-s);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: var(--font-size-m);
+}
+
+.btn-primary {
+    background-color: var(--color-primary-base);
+    color: var(--color-neutral-white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 0 0 3px rgba(42, 142, 83, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary-base);
+    color: var(--color-neutral-dark);
+    border: 1px solid var(--color-secondary-dark);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--color-secondary-dark);
+    color: var(--color-neutral-white);
+    box-shadow: 0 0 0 3px rgba(247, 147, 30, 0.4);
+}
+
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn:disabled {
+    background-color: var(--color-neutral-medium);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* === Cards Responsivos (Para Projetos.html) === */
+.card-grid {
+    display: grid;
+    gap: var(--spacing-l);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: var(--spacing-xl);
+}
+
+.card {
+    background-color: var(--color-neutral-white);
+    border-radius: var(--border-radius-s);
+    box-shadow: var(--box-shadow-m);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: var(--spacing-m);
+    flex-grow: 1;
+}
+
+/* === Badges/Tags === */
+.badge {
+    display: inline-block;
+    padding: var(--spacing-xs) calc(var(--spacing-xs) + 4px);
+    border-radius: 50px;
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    margin-right: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.badge-educacao {
+    background-color: var(--color-secondary-base);
+    color: var(--color-neutral-dark);
+}
+
+.badge-voluntariado {
+    background-color: var(--color-primary-base);
+    color: var(--color-neutral-white);
+}
+
+.badge-social {
+    background-color: #f06292;
+    color: var(--color-neutral-white);
+}
+
+.badge-ambiente {
+    background-color: #81c784;
+    color: var(--color-neutral-dark);
+}
+
+/* === Formulários Estilizados com Validação Visual (Para Cadastro.html) === */
+form {
+    max-width: 600px;
+    margin: var(--spacing-m) auto;
+    padding: var(--spacing-m);
+    border: 1px solid var(--color-neutral-light);
+    border-radius: var(--border-radius-s);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+fieldset {
+    margin-bottom: var(--spacing-m);
+    padding: var(--spacing-s);
+    border: 1px solid var(--color-neutral-light);
+    border-radius: var(--border-radius-s);
+}
+
+legend {
+    font-weight: var(--font-weight-bold);
+    padding: 0 var(--spacing-xs);
+    color: var(--color-primary-dark);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-s);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-neutral-medium);
+    border-radius: var(--border-radius-s);
+    font-size: var(--font-size-m);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-primary-base);
+    box-shadow: 0 0 0 2px rgba(42, 142, 83, 0.2);
+}
+
+/* Validação Visual */
+input:invalid:not(:placeholder-shown) {
+    border-color: var(--color-error);
+}
+
+input:valid:not(:placeholder-shown) {
+    border-color: var(--color-success);
+}
+
+/* === Componentes de Feedback (Alerts) === */
+.alert {
+    padding: var(--spacing-s);
+    border-radius: var(--border-radius-s);
+    margin-bottom: var(--spacing-m);
+    font-weight: var(--font-weight-bold);
+    border-left: 5px solid;
+    font-size: var(--font-size-s);
+}
+
+.alert-error {
+    background-color: #fce7e7;
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.alert-warning {
+    background-color: #faffb9;
+    color: var(--color-secondary-dark);
+    border-color: var(--color-secondary-dark);
+}
+
+/* ========================================================= */
+/* 6. RESPONSIVIDADE (5 Breakpoints Mínimos) */
+/* ========================================================= */
+
+/* 1. Mobile Pequeno (Mínimo 480px) */
+@media screen and (min-width: 480px) {
+    .logo-area h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* 2. Tablet (Mínimo 640px) */
+@media screen and (min-width: 640px) {
+    main {
+        padding: var(--spacing-l);
+    }
+
+    /* Apenas ajusta o alinhamento da área do logo. 
+       O cabecalho-principal continua em flex-direction: column (empilhado) */
+    .cabecalho-principal {
+        align-items: center;
+    }
+
+    .logo-area {
+        flex-wrap: nowrap;
+    }
+
+    .cabecalho-principal nav {
+        margin-top: var(--spacing-s);
+    }
+
+    .cabecalho-principal nav ul {
+        gap: var(--spacing-m);
+    }
+}
+
+/* 3. Desktop Médio (Mínimo 992px) */
+@media screen and (min-width: 992px) {
+    .logo-area h1 {
+        font-size: 2.2rem;
+    }
+
+    /* Regras de Coluna do Grid Customizado */
+    .col-desktop-7 {
+        grid-column: span 7;
+    }
+
+    .col-desktop-5 {
+        grid-column: span 5;
+    }
+
+    /* Aplica o Grid para a seção de objetivo na Index.html */
+    #objetivo.container-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: start;
+        gap: var(--spacing-xl);
+    }
+}
+
+/* 4. Desktop Grande (Mínimo 1200px) */
+@media screen and (min-width: 1200px) {
+    .logo-area h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* 5. Desktop Extra Grande (Mínimo 1400px) */
+@media screen and (min-width: 1400px) {
+    main {
+        padding: var(--spacing-xxl);
+    }
 }
