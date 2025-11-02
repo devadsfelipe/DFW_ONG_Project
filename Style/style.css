@@ -1,56 +1,28 @@
-/* ========================================================= */
-/* 1. SISTEMA DE DESIGN (Variáveis, Cores, Tipografia, Espaçamento) */
-/* ========================================================= */
-
 :root {
-    /* ---------------------------------- */
-    /* Paleta de Cores (Mínimo 8 cores) */
-    /* ---------------------------------- */
     --color-primary-base: #2a8e53;
-    /* Verde Principal (Guardiões) */
     --color-primary-dark: #1e6c3e;
-    /* Verde para estados (hover) */
     --color-secondary-base: #f7931e;
-    /* Laranja Secundário (Ação/Destaque) */
     --color-secondary-dark: #cc781a;
-    /* Laranja para estados */
-
     --color-neutral-white: #ffffff;
     --color-neutral-light: #f4f4f4;
-    /* Fundo/bordas leves */
     --color-neutral-medium: #888888;
-    /* Borda, texto de apoio */
     --color-neutral-dark: #333333;
-    /* Texto principal */
-
-    /* Cores de Feedback */
     --color-success: #4caf50;
     --color-error: #f44336;
     --color-warning: #ffeb3b;
 
-    /* ---------------------------------- */
-    /* Tipografia (Mínimo 5 tamanhos) */
-    /* ---------------------------------- */
+    
     --font-family-primary: 'Roboto', sans-serif;
     --font-family-secondary: 'Merriweather', serif;
 
     --font-size-xxl: 2.8rem;
-    /* H1 */
     --font-size-xl: 2rem;
-    /* H2 */
     --font-size-l: 1.5rem;
-    /* H3 */
     --font-size-m: 1rem;
-    /* Padrão (body) */
     --font-size-s: 0.875rem;
-    /* Pequeno (badges, legendas) */
-
     --font-weight-regular: 400;
     --font-weight-bold: 700;
 
-    /* ---------------------------------- */
-    /* Espaçamento Modular (Múltiplos de 8px) */
-    /* ---------------------------------- */
     --spacing-xs: 8px;
     --spacing-s: 16px;
     --spacing-m: 24px;
@@ -58,14 +30,9 @@
     --spacing-xl: 48px;
     --spacing-xxl: 64px;
 
-    /* Variáveis de Borda e Sombra */
     --border-radius-s: 4px;
     --box-shadow-m: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* ========================================================= */
-/* 2. BASE (Reset e Tipografia Global) */
-/* ========================================================= */
 
 * {
     margin: 0;
@@ -126,13 +93,11 @@ img {
     display: block;
 }
 
-/* Classe utilitária para texto pequeno */
 .text-small {
     font-size: var(--font-size-s);
     color: var(--color-neutral-medium);
 }
 
-/* Correção do Reset para Listas Ordenadas */
 ol {
     margin-block-start: 0;
     margin-block-end: 0;
@@ -140,11 +105,6 @@ ol {
     margin-bottom: 0;
 }
 
-/* ========================================================= */
-/* 3. LAYOUT GRID E ESTRUTURA (12 Colunas) */
-/* ========================================================= */
-
-/* CSS Grid para a estrutura macro */
 body {
     display: grid;
     grid-template-areas:
@@ -169,7 +129,6 @@ footer {
     grid-area: footer;
 }
 
-/* Sistema de Grid Customizado (12 colunas) */
 .container-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -181,21 +140,13 @@ footer {
     grid-column: span 12;
 }
 
-
-/* ========================================================= */
-/* 4. COMPONENTES E LAYOUTS ESPECÍFICOS */
-/* ========================================================= */
-
-/* LAYOUT E NAVEGAÇÃO (Com correção para centralização do menu) */
 .cabecalho-principal {
     background-color: var(--color-neutral-light);
     border-bottom: 3px solid var(--color-primary-base);
     padding: var(--spacing-s) var(--spacing-m);
 
     display: flex;
-    /* Corrigido: Força coluna para empilhar h1 e nav */
     flex-direction: column; 
-    /* Centraliza os itens horizontalmente */
     align-items: center; 
     text-align: center;
 }
@@ -223,7 +174,6 @@ footer {
 
 .cabecalho-principal nav {
     margin-top: var(--spacing-s);
-    /* Garante que a nav ocupe a largura total */
     width: 100%;
 }
 
@@ -232,7 +182,6 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    /* Centraliza o menu */
     justify-content: center; 
     gap: var(--spacing-s);
     flex-wrap: wrap;
@@ -252,7 +201,6 @@ nav a.active {
     text-decoration: none;
 }
 
-/* === Submenu Dropdown === */
 .dropdown {
     position: relative;
     padding-bottom: 2px;
@@ -288,7 +236,6 @@ nav a.active {
     border: none;
 }
 
-/* Footer */
 footer {
     background-color: var(--color-neutral-dark);
     color: var(--color-neutral-white);
@@ -300,7 +247,6 @@ footer a {
     color: var(--color-secondary-base);
 }
 
-/* === Botões === */
 .btn {
     display: inline-block;
     padding: var(--spacing-s) var(--spacing-m);
@@ -348,7 +294,6 @@ footer a {
     opacity: 0.6;
 }
 
-/* === Cards Responsivos === */
 .card-grid {
     display: grid;
     gap: var(--spacing-l);
@@ -383,7 +328,6 @@ footer a {
     flex-grow: 1;
 }
 
-/* === Badges === */
 .badge {
     display: inline-block;
     padding: var(--spacing-xs) calc(var(--spacing-xs) + 4px);
@@ -415,7 +359,6 @@ footer a {
     color: var(--color-neutral-dark);
 }
 
-/* === ESTILOS DE DESTAQUE DE SEÇÃO (Ex: Doação) === */
 .secao-destaque {
     padding-top: var(--spacing-xl);
     padding-bottom: var(--spacing-xl);
@@ -438,11 +381,6 @@ footer a {
 .area-botao {
     margin-top: var(--spacing-s);
 }
-
-
-/* ========================================================= */
-/* 5. FORMULÁRIOS ESTILIZADOS COM VALIDAÇÃO (Nativa e JS) */
-/* ========================================================= */
 
 form {
     max-width: 600px;
@@ -496,7 +434,6 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(42, 142, 83, 0.2);
 }
 
-/* Validação Nativa do HTML5 */
 input:invalid:not(:placeholder-shown) {
     border-color: var(--color-error);
 }
@@ -504,8 +441,6 @@ input:invalid:not(:placeholder-shown) {
 input:valid:not(:placeholder-shown) {
     border-color: var(--color-success);
 }
-
-/* === Classes de Validação Controladas pelo JavaScript (JS) === */
 
 .form-group input.is-invalid {
     border-color: var(--color-error) !important;
@@ -520,8 +455,6 @@ input:valid:not(:placeholder-shown) {
     box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.4);
 }
 
-
-/* === Componentes de Feedback (Alerts) === */
 .alert {
     padding: var(--spacing-s);
     border-radius: var(--border-radius-s);
@@ -534,7 +467,7 @@ input:valid:not(:placeholder-shown) {
 .alert-error {
     background-color: #fce7e7;
     color: var(--color-error);
-    border-color: var(--color-error); /* FECHAMENTO CORRIGIDO */
+    border-color: var(--color-error); 
 }
 
 .alert-warning {
@@ -542,10 +475,6 @@ input:valid:not(:placeholder-shown) {
     color: var(--color-secondary-dark);
     border-color: var(--color-secondary-dark);
 }
-
-/* ========================================================= */
-/* 6. RESPONSIVIDADE (5 Breakpoints Mínimos) */
-/* ========================================================= */
 
 /* 1. Mobile Pequeno (Mínimo 480px) */
 @media screen and (min-width: 480px) {
@@ -583,7 +512,6 @@ input:valid:not(:placeholder-shown) {
         font-size: 2.2rem;
     }
 
-    /* Regras de Coluna do Grid Customizado */
     .col-desktop-7 {
         grid-column: span 7;
     }
@@ -592,7 +520,6 @@ input:valid:not(:placeholder-shown) {
         grid-column: span 5;
     }
 
-    /* Aplica o Grid para a seção de objetivo na Index.html */
     #objetivo.container-grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
