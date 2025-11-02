@@ -132,13 +132,12 @@ img {
     color: var(--color-neutral-medium);
 }
 
+/* Correção do Reset para Listas Ordenadas */
 ol {
-    margin-block-start: 0; 
-    margin-block-end: 0;  
+    margin-block-start: 0;
+    margin-block-end: 0;
     margin-top: 0;
     margin-bottom: 0;
-    margin-top: 0; 
-  
 }
 
 /* ========================================================= */
@@ -184,23 +183,23 @@ footer {
 
 
 /* ========================================================= */
-/* 4. LAYOUT E NAVEGAÇÃO (Flexbox para Cabeçalho) */
+/* 4. COMPONENTES E LAYOUTS ESPECÍFICOS */
 /* ========================================================= */
 
+/* LAYOUT E NAVEGAÇÃO (Com correção para centralização do menu) */
 .cabecalho-principal {
     background-color: var(--color-neutral-light);
     border-bottom: 3px solid var(--color-primary-base);
     padding: var(--spacing-s) var(--spacing-m);
 
     display: flex;
-    /* Manter a direção da coluna (empilhada) em todas as telas */
-    flex-direction: column;
-    /* Centraliza os itens horizontalmente (logo-area e nav) */
-    align-items: center;
+    /* Corrigido: Força coluna para empilhar h1 e nav */
+    flex-direction: column; 
+    /* Centraliza os itens horizontalmente */
+    align-items: center; 
     text-align: center;
 }
 
-/* Logo e título: Flexbox em linha, mas wrap em mobile */
 .logo-area {
     display: flex;
     align-items: center;
@@ -224,6 +223,7 @@ footer {
 
 .cabecalho-principal nav {
     margin-top: var(--spacing-s);
+    /* Garante que a nav ocupe a largura total */
     width: 100%;
 }
 
@@ -232,7 +232,8 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    /* Centraliza o menu */
+    justify-content: center; 
     gap: var(--spacing-s);
     flex-wrap: wrap;
 }
@@ -414,7 +415,35 @@ footer a {
     color: var(--color-neutral-dark);
 }
 
-/* === Formulários Estilizados com Validação === */
+/* === ESTILOS DE DESTAQUE DE SEÇÃO (Ex: Doação) === */
+.secao-destaque {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xxl);
+    background-color: var(--color-neutral-light);
+    border-radius: var(--border-radius-s);
+}
+
+.lista-passos {
+    list-style: decimal inside;
+    padding-left: 0;
+    margin-bottom: var(--spacing-m); 
+}
+
+.lista-passos li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.area-botao {
+    margin-top: var(--spacing-s);
+}
+
+
+/* ========================================================= */
+/* 5. FORMULÁRIOS ESTILIZADOS COM VALIDAÇÃO (Nativa e JS) */
+/* ========================================================= */
+
 form {
     max-width: 600px;
     margin: var(--spacing-m) auto;
@@ -467,7 +496,7 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(42, 142, 83, 0.2);
 }
 
-/* Validação  */
+/* Validação Nativa do HTML5 */
 input:invalid:not(:placeholder-shown) {
     border-color: var(--color-error);
 }
@@ -475,6 +504,22 @@ input:invalid:not(:placeholder-shown) {
 input:valid:not(:placeholder-shown) {
     border-color: var(--color-success);
 }
+
+/* === Classes de Validação Controladas pelo JavaScript (JS) === */
+
+.form-group input.is-invalid {
+    border-color: var(--color-error) !important;
+    box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+}
+
+.form-group input.is-valid {
+    border-color: var(--color-success) !important;
+}
+
+.form-group input.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.4);
+}
+
 
 /* === Componentes de Feedback (Alerts) === */
 .alert {
@@ -489,7 +534,7 @@ input:valid:not(:placeholder-shown) {
 .alert-error {
     background-color: #fce7e7;
     color: var(--color-error);
-    border-color: var(--color-error);
+    border-color: var(--color-error); /* FECHAMENTO CORRIGIDO */
 }
 
 .alert-warning {
@@ -497,6 +542,10 @@ input:valid:not(:placeholder-shown) {
     color: var(--color-secondary-dark);
     border-color: var(--color-secondary-dark);
 }
+
+/* ========================================================= */
+/* 6. RESPONSIVIDADE (5 Breakpoints Mínimos) */
+/* ========================================================= */
 
 /* 1. Mobile Pequeno (Mínimo 480px) */
 @media screen and (min-width: 480px) {
@@ -534,6 +583,7 @@ input:valid:not(:placeholder-shown) {
         font-size: 2.2rem;
     }
 
+    /* Regras de Coluna do Grid Customizado */
     .col-desktop-7 {
         grid-column: span 7;
     }
@@ -542,6 +592,7 @@ input:valid:not(:placeholder-shown) {
         grid-column: span 5;
     }
 
+    /* Aplica o Grid para a seção de objetivo na Index.html */
     #objetivo.container-grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
